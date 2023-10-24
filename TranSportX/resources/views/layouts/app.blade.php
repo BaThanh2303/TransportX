@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <base href="/">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="description" content="TransportX">
+    <meta name="keywords" content="Logistics, Delivery, Transport">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield("title","TransportX")</title>

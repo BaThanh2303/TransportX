@@ -12,17 +12,23 @@
                                 <h1 >Safe & Reliable <span>Logistic</span> Solutions!</h1>
                             </div>
                             <!--Hero form -->
-                            <form action="#" class="search-box">
+                            <form action="{{url("/")}}" method="post" class="search-box">
+                                @csrf
                                 <div class="input-form">
                                     <input type="text" placeholder="Your Tracking ID">
                                 </div>
                                 <div class="search-form">
-                                    <a href="#">Track & Trace</a>
+                                    <button type="submit">Track & Trace</button>
                                 </div>
                             </form>
                             <!-- Hero Pera -->
                             <div class="hero-pera">
                                 <p>For order status inquiry</p>
+                                <ul>
+                                    @foreach($product as $item)
+                                    <li>{{$item->condition}}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                     </div>
