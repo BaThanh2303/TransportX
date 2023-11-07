@@ -58,8 +58,4 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
-    public function addressUser() {
-        $province = DB::table('provinces')->select("code","full_name")->get();
-        return view("admin.pages.account.addressUser", compact("province"));
-    }
 }

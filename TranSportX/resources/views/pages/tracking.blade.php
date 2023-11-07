@@ -1,36 +1,39 @@
 @extends("layouts.app")
 @section("main")
-    <!--? slider Area Start-->
     <div class="slider-area ">
         <div class="slider-active">
             <!-- Single Slider -->
-            <div class="single-slider slider-height d-flex align-items-center">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-9 col-lg-9">
-                            <div class="hero__caption">
-                                <h1 >Safe & Reliable <span>Logistic</span> Solutions!</h1>
-                            </div>
+                            <div class="mt-5 ml-5">
                             <!--Hero form -->
-                            <form action="{{url("/")}}" method="post" class="search-box">
+                            <form action="{{url("/")}}" method="post" class="search-box ">
                                 @csrf
                                 <div class="input-form">
-                                    <input type="text" name="code" placeholder="Your Tracking ID">
+                                    <input type="text" name="code" value="{{$code}}" placeholder="Your Tracking ID">
                                 </div>
-                                    <button type="submit" class="btn light btn-secondary">Track & Trace</button>
+                                <button type="submit" class="btn light btn-secondary">Track & Trace</button>
                             </form>
                             <!-- Hero Pera -->
-                            <div class="hero-pera">
-                                <p>For order status inquiry</p>
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-md">
+                                        <tbody>
+
+                                        <tr>
+                                            <td>{!! $order->getStatus() !!}</td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
-    <!-- slider Area End-->
-    <!--? our info Start -->
     <div class="our-info-area pt-70 pb-40">
         <div class="container">
             <div class="row">
@@ -299,5 +302,4 @@
         </div>
     </div>
     <!-- Blog Area End -->
-
 @endsection

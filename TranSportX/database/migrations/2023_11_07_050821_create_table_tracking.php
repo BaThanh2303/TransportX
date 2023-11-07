@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('status', function (Blueprint $table) {
+        Schema::create('tracking', function (Blueprint $table) {
             $table->id();
-            $table->string("condition");
+            $table->unsignedBigInteger("order_id");
+            $table->string("update");
+            $table->string("status");
+            $table->foreign("order_id")->references("id")->on("orders");
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('status');
+        Schema::dropIfExists('tracking');
     }
 };

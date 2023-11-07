@@ -8,12 +8,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function Home(Request $request){
-        $product = Order::where("code", $request)
-            ->join("status","orders.status_id","=","status.id")
-            ->select("status.condition")
-            ->get();
-        return view("pages.home",compact("product"));
+    public function Home(){
+        return view("pages.home");
     }
     public function contact(){
         return view("pages.contact");
@@ -25,23 +21,17 @@ class ProductController extends Controller
         return view("pages.services");
     }
     public function search(Request $request) {
-        $product = Order::where("code", $request)
-            ->join("status","orders.status_id","=","status.id")
-            ->select("status.condition")
-            ->get();
+        // Lấy thông tin đơn hàng của người dùng
+        $code = $request->get("code");
+        $order = Order::where('code_orders', $code)->first();
+        // Nếu đơn hàng không tồn tại
+        if (!$order) {
+            // Trả về lỗi
+            return redirect()->back()->withErrors([
+                'error' => 'Không tìm thấy đơn hàng',
+            ]);
+        }
+        return view("pages.tracking", compact("order","code"));
     }
-    public function create(){
-        return view("admin.pages.createOrder");
-    }
-    public function createOrder(Request $request){
-        $request->validate([
-            "full_name"=>"required|min:6",
-            "account"=>"required",
-            "tel"=> "required|min:9|max:11",
-            ""
 
-        ],[
-            "required"=>"Vui lòng nhập thông tin."
-        ]);
-    }
 }

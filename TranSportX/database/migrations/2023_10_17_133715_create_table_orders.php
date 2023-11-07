@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer("code");
-            $table->unsignedBigInteger("user_id");
-            $table->unsignedBigInteger("product_id");
-            $table->unsignedBigInteger("customer_id");
-            $table->unsignedBigInteger("status_id");
-            $table->unsignedDecimal("price");
+            $table->integer("code_orders");
+            $table->unsignedBigInteger("user_id")->nullable();
+            $table->smallInteger("status")->default(0);
+            $table->string("sender_name");
+            $table->string("sender_telephone");
+            $table->string("sender_address");
+            $table->string("full_name");
+            $table->integer("telephone");
+            $table->string("address");
+            $table->unsignedDecimal("total_price")->nullable();
             $table->timestamps();
-            $table->foreign("customer_id")->references("id")->on("customers");
-            $table->foreign("product_id")->references("id")->on("products");
             $table->foreign("user_id")->references("id")->on("users");
-
         });
     }
 

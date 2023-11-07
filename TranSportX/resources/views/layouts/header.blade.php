@@ -12,26 +12,6 @@
                                     <li>Email: noreply@yourdomain.com</li>
                                 </ul>
                             </div>
-                            <div class="header-info-right">
-                                <ul class="header-social">
-                                    @auth()
-                                        <a href="#"><i class="fa fa-user"></i> {{auth()->user()->name}}</a>
-                                        <form id="form-logout" action="{{route("logout")}}" method="post">
-                                            @csrf
-                                        </form>
-                                        <a href="javascript:void(0);" onclick="$('#form-logout').submit();">
-                                            <i class="fa fa-align-right"></i>Logout</a>
-                                    @endauth
-                                    @guest()
-                                        <a href="{{route("login")}}"><i class="fa fa-user"></i>Login</a>
-                                        <a href="{{route("register")}}"><i class="fa fa-user"></i>Register</a>
-                                    @endguest
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li> <a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>

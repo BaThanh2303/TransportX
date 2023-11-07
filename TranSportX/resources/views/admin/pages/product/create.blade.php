@@ -1,72 +1,46 @@
 @extends("admin.layouts.app_admin")
 @section("main")
-    <div class="content-wrapper">
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form action="{{url("admin/product/create")}}" method="post" enctype="multipart/form-data">
-                @csrf
+    <div class="container">
+    <div class="container mt-5">
+        <div class="col-xl-12 col-lg-10">
+            <div class="card">
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
-                        <input type="text" name="name" value="{{old("name")}}" class="form-control"  placeholder="Enter Name" required>
-                        @error("name")
-                        <p class="text-danger"><i>{{$message}}</i></p>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Price</label>
-                        <input type="number" value="{{old("price")}}" name="price" class="form-control"  placeholder="Price">
-                        @error("price")
-                        <p class="text-danger"><i>{{$message}}</i></p>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">Thumbnail</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input name="thumbnail" type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Qty</label>
-                        <input type="number" value="{{old("qty")}}" name="qty" class="form-control"  placeholder="Qty">
-                        @error("qty")
-                        <p class="text-danger"><i>{{$message}}</i></p>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Category</label>
-                        <select name="category_id" class="form-control">
-                            <option value="">Choose category</option>
-                            @foreach($categories as $item)
-                                <option @if($item->id==old("category_id")) selected @endif value="{{$item->id}}">{{$item->name}}</option>
-                            @endforeach
-                        </select>
-                        @error("category_id")
-                        <p class="text-danger"><i>{{$message}}</i></p>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea name="description" class="form-control" row="5">
-                        {{old("description")}}
-                    </textarea>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
+        <form action="{{url("/product/createProduct")}}" method="post">
+            @csrf
+        <div class="row">
+            <div class="mb-3 col-md-12">
+                <label class="form-label">Tên Hàng</label>
+                <input type="text" name="name_product" class="form-control" placeholder="Tên Hàng Hóa">
+            </div>
+            <div class="mb-3 col-md-4">
+                <label class="form-label">Số Lượng</label>
+                <input type="text" name="qty" class="form-control" placeholder="Số Lượng">
+            </div>
+            <div class="mb-3 col-md-4">
+                <label class="form-label">Trọng Lượng</label>
+                <input type="number" name="weight" class="form-control" placeholder="Trọng Lượng">
+            </div>
+            <div class="mb-3 col-md-4">
+                <label class="form-label">Giá Trị</label>
+                <input type="number" name="price" class="form-control" placeholder="Giá Trị">
+            </div>
+            <label class="form-label">Kích Thước (CM)</label>
+            <div class="mb-3 col-md-4">
+                <input type="text" name="length" class="form-control" placeholder="Dài">
+            </div>
+            <div class="mb-3 col-md-4">
+                <input type="number" name="width" class="form-control" placeholder="Rộng">
+            </div>
+            <div class="mb-3 col-md-4">
+                <input type="number" name="height" class="form-control" placeholder="Cao">
+            </div>
+
         </div>
+        <button type="submit" class="btn btn-primary">Thêm Hàng Hóa</button>
+        </form>
+    </div>
+            </div>
+        </div>
+    </div>
     </div>
 @endsection
