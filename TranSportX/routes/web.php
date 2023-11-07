@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\ProductController::class,"Home"]);
+Route::post('/', [\App\Http\Controllers\ProductController::class,"search"]);
 Route::get('/contact', [\App\Http\Controllers\ProductController::class,"contact"]);
 Route::get('/about', [\App\Http\Controllers\ProductController::class,"about"]);
 Route::get('/services', [\App\Http\Controllers\ProductController::class,"services"]);
@@ -27,21 +28,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::prefix("account")->group(function (){
-        Route::get("/address", [\App\Http\Controllers\ProfileController::class, "addressUser"]);
-    });
 
     Route::prefix("product")->group(function () {
         Route::get("/", [\App\Http\Controllers\ProductController::class, "index"]);
-        Route::get("/create", [\App\Http\Controllers\ProductController::class, "create"]);
-        Route::post("/create", [\App\Http\Controllers\ProductController::class, "store"]);
+        Route::get("/create", [\App\Http\Controllers\AdminController::class, "create"]);
+        Route::post("/create", [\App\Http\Controllers\AdminController::class, "store"]);
+        Route::post("/createProduct", [\App\Http\Controllers\AdminController::class, "createProduct"]);
+        Route::get("/createProduct", [\App\Http\Controllers\AdminController::class, "addProduct"]);
         Route::get("/edit/{product}", [\App\Http\Controllers\ProductController::class, "edit"]);
         Route::put("/edit/{product}", [\App\Http\Controllers\ProductController::class, "update"]);
         Route::delete("/delete/{product}", [\App\Http\Controllers\ProductController::class, "delete"]);
     });
 });
-Route::middleware(["auth","is_admin"])->prefix("admin")->group(function (){
-    include_once "admin.php";
-});
+
 
 require __DIR__.'/auth.php';
