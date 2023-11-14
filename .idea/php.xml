@@ -123,6 +123,7 @@
       <path value="$PROJECT_DIR$/TranSportX/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/TranSportX/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/TranSportX/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/TranSportX/vendor/laravel/breeze" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
