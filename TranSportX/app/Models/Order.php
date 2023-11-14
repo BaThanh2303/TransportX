@@ -29,7 +29,7 @@ class Order extends Model
     const CANCEL = 5;
     public function getStatus(){
         switch ($this->status){
-            case self::PENDING: return "<span class='text-secondary'>Chờ xác nhận</span>";
+            case self::PENDING: return "<span class='text-secondary'>Đơn Hàng Đã Được Tạo</span>";
             case self::CONFIRMED: return "<span class='text-info'>Đã xác nhận</span> ";
             case self::SHIPPING: return "<span class='text-warning'>Đang giao hàng</span>";
             case self::SHIPPED: return "<span class='text-primary'>Đã giao hàng</span>";

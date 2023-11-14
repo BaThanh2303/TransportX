@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Session;
 class AdminController extends Controller
 {
     public function create(){
-        $product = session()->has("product")?session("product"):[];
-        return view("admin.pages.createOrder",compact("product"));
+        return view("admin.pages.createOrder");
     }
     public function store(Request $request){
         $order = Order::create([
