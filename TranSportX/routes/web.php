@@ -38,6 +38,9 @@ Route::middleware('auth')->group(function () {
         Route::get("/edit/{product}", [\App\Http\Controllers\ProductController::class, "edit"]);
         Route::put("/edit/{product}", [\App\Http\Controllers\ProductController::class, "update"]);
         Route::delete("/delete/{product}", [\App\Http\Controllers\ProductController::class, "delete"]);
+        Route::post('/districts',[\App\Http\Controllers\AdminController::class,'districts']);
+        Route::post('/wards',[\App\Http\Controllers\AdminController::class,'wards']);
+        Route::get('/addProduct',[\App\Http\Controllers\AdminController::class,'addProduct']);
     });
 });
 
